@@ -86,8 +86,6 @@ else:
     st.warning("No good tides or winds found today.")
 
 
-st.subheader("🦀 Best Crabbing Times")
-
 import requests
 
 if location == "Astoria":
