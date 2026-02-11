@@ -2,6 +2,12 @@ import streamlit as st
 import requests
 from datetime import datetime
 
+st.set_page_config(
+    page_title="Oregon Tide & Crabbing Predictor",
+    page_icon="🦀",
+    layout="wide"
+)
+
 st.title("🦀 Tide Predictor")
 
 location = st.selectbox(
