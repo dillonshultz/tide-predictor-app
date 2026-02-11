@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 
 st.set_page_config(
     page_title="Oregon Tide & Crabbing Predictor",
