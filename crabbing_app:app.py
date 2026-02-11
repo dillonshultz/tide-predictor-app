@@ -34,11 +34,13 @@ else:
 
 selected_date = st.sidebar.date_input("Select Date")
 
-st.title("Tides For Selected Location 🗺️")
+
 
 st.title("🦀 Oregon Tide & Crabbing Predictor")
 st.caption("Live NOAA data to help you find the best crabbing conditions")
 st.divider()
+
+st.subheader("Tides For Selected Location 🗺️")
 
 # Get today's date in the format NOAA requires (YYYYMMDD)
 today = datetime.now().strftime("%Y%m%d")
