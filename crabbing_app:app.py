@@ -7,6 +7,14 @@ st.set_page_config(
     page_icon="🦀",
     layout="wide"
 )
+st.markdown("""
+    <style>
+    .stApp {
+        background-color: #f0f6ff;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 
 st.title("🦀 Tide Predictor")
 
