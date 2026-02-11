@@ -15,7 +15,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-
 st.subheader("Today's Tides")
 
 st.sidebar.header("⚙️ Settings")
@@ -30,17 +29,13 @@ if location == "Astoria":
 else:
     station_id = "9439201"
 
-
-
 selected_date = st.sidebar.date_input("Select Date")
-
-
 
 st.title("🦀 Oregon Tide & Crabbing Predictor")
 st.caption("Live NOAA data to help you find the best crabbing conditions")
 st.divider()
 
-st.subheader("Tides For Selected Location 🗺️")
+st.subheader("🗺️ Tides For Selected Location")
 
 # Get today's date in the format NOAA requires (YYYYMMDD)
 today = datetime.now().strftime("%Y%m%d")
@@ -106,7 +101,7 @@ weather_data = weather_response.json()
 
 if weather_response.status_code == 200 and "wind" in weather_data:
     wind_speed = weather_data["wind"]["speed"]
-    st.subheader("🌬 Current Wind Speed")
+    st.subheader("💨 Current Wind Speed")
     st.write(f"{wind_speed} mph")
 else:
     wind_speed = None
