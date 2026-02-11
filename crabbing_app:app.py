@@ -138,7 +138,11 @@ ax.set_xlabel("Time")
 ax.set_ylabel("Tide Height (ft)")
 ax.set_title("Tide Heights for Today")
 
-st.pyplot(fig)
+st.divider()
+st.subheader("🌊 Tide Height Chart")
+
+with st.container():
+    st.pyplot(fig)
 
 
 
