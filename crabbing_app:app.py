@@ -130,8 +130,6 @@ df = pd.DataFrame({
 
 df["Time"] = pd.to_datetime(df["Time"])
 
-st.subheader("🌊 Tide Height Graph")
-
 fig, ax = plt.subplots()
 ax.plot(df["Time"], df["Height"])
 ax.set_xlabel("Time")
