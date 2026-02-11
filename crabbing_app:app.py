@@ -40,7 +40,7 @@ st.subheader("🗺️ Tides For Selected Location")
 # Get today's date in the format NOAA requires (YYYYMMDD)
 today = datetime.now().strftime("%Y%m%d")
 
-url = f"https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=predictions&application=web_services&begin_date={today}&end_date={today}&datum=MLLW&station={station_id}&time_zone=lst_ldt&units=english&interval=hilo&format=json"
+url = f"https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date={begin_date}&end_date={end_date}&station={station_id}&product=predictions&datum=MLLW&units=english&time_zone=lst_ldt&interval=hilo&format=json"
 
 response = requests.get(url)
 
@@ -63,6 +63,9 @@ else:
     st.write("Status code:", response.status_code)
 
 begin_date=20260210
+
+st.write(f"Showing tide predictions for **{selected_date.strftime('%B %d, %Y')}**")
+
 
 st.subheader("🦀 Best Crabbing Times")
 
@@ -138,6 +141,7 @@ with st.container():
 
 from datetime import datetime, timedelta
 
-
+st.subheader("📅 Select Date for Tide Prediction")
+selected_date = st.date_input("Choose a date", datetime.today())
 begin_date = selected_date.strftime("%Y%m%d")
 end_date = (selected_date + timedelta(days=1)).strftime("%Y%m%d")
