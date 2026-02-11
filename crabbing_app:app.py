@@ -73,7 +73,7 @@ for tide in data["predictions"]:
         best_times.append(tide["t"])
 
 if best_times:
-    st.success("Good crabbing near these high tides and wind:")
+    st.success("Good crabbing near these tides and wind:")
     for time in best_times:
         st.write("•", time)
 else:
