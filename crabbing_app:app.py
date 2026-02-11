@@ -35,6 +35,13 @@ st.title("🦀 Oregon Tide & Crabbing Predictor")
 st.caption("Live NOAA data to help you find the best crabbing conditions")
 st.divider()
 
+st.subheader("📅 Select Date for Tide Prediction")
+selected_date = st.date_input("Choose a date", datetime.today())
+begin_date = selected_date.strftime("%Y%m%d")
+end_date = (selected_date + timedelta(days=1)).strftime("%Y%m%d")
+url = f"https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date={begin_date}&end_date={end_date}&station={station_id}&product=predictions&datum=MLLW&units=english&time_zone=lst_ldt&interval=hilo&format=json"
+
+
 st.subheader("🗺️ Tides For Selected Location")
 
 # Get today's date in the format NOAA requires (YYYYMMDD)
@@ -79,12 +86,6 @@ else:
     st.warning("No good tides or winds found today.")
     
 from datetime import datetime, timedelta
-
-st.subheader("📅 Select Date for Tide Prediction")
-selected_date = st.date_input("Choose a date", datetime.today())
-begin_date = selected_date.strftime("%Y%m%d")
-end_date = (selected_date + timedelta(days=1)).strftime("%Y%m%d")
-url = f"https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date={begin_date}&end_date={end_date}&station={station_id}&product=predictions&datum=MLLW&units=english&time_zone=lst_ldt&interval=hilo&format=json"
 
 
 import requests
