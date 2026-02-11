@@ -16,18 +16,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-st.title("🦀 Tide Predictor")
-
-location = st.selectbox(
-    "Choose a location:",
-    ["Astoria", "Buoy 10 Area"]
-)
-
-if location == "Astoria":
-    station_id = "9439040"
-else:
-    station_id = "9439201"
-
 st.subheader("Today's Tides")
 
 st.sidebar.header("⚙️ Settings")
@@ -38,6 +26,13 @@ location = st.sidebar.selectbox(
 )
 
 selected_date = st.sidebar.date_input("Select Date")
+
+
+if location == "Astoria":
+    station_id = "9439040"
+else:
+    station_id = "9439201"
+
 
 st.title("🦀 Oregon Tide & Crabbing Predictor")
 st.caption("Live NOAA data to help you find the best crabbing conditions")
