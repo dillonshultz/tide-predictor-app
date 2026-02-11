@@ -49,15 +49,15 @@ best_times = []
 
 for tide in data["predictions"]:
     if tide["type"] == "H":
-        if wind_speed is not None and wind_speed < 12:
-            best_times.append(tide["t"])
+        best_times.append(tide["t"])
 
 if best_times:
-    st.success("Good crabbing near these high tides with calm wind:")
+    st.success("Good crabbing near these high tides and wind:")
     for time in best_times:
         st.write("•", time)
 else:
-    st.warning("Wind may be too strong or no good tides today.")
+    st.warning("No good tides or winds found today.")
+
 
 st.subheader("🦀 Best Crabbing Times")
 
