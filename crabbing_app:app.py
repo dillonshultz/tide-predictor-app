@@ -62,8 +62,6 @@ else:
     st.error("Could not connect to NOAA tide data.")
     st.write("Status code:", response.status_code)
 
-begin_date=20260210
-
 
 st.subheader("🦀 Best Crabbing Times")
 
@@ -79,6 +77,14 @@ if best_times:
         st.write("•", time)
 else:
     st.warning("No good tides or winds found today.")
+    
+from datetime import datetime, timedelta
+
+st.subheader("📅 Select Date for Tide Prediction")
+selected_date = st.date_input("Choose a date", datetime.today())
+begin_date = selected_date.strftime("%Y%m%d")
+end_date = (selected_date + timedelta(days=1)).strftime("%Y%m%d")
+url = f"https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date={begin_date}&end_date={end_date}&station={station_id}&product=predictions&datum=MLLW&units=english&time_zone=lst_ldt&interval=hilo&format=json"
 
 
 import requests
@@ -137,10 +143,3 @@ with st.container():
 
 
 
-from datetime import datetime, timedelta
-
-st.subheader("📅 Select Date for Tide Prediction")
-selected_date = st.date_input("Choose a date", datetime.today())
-begin_date = selected_date.strftime("%Y%m%d")
-end_date = (selected_date + timedelta(days=1)).strftime("%Y%m%d")
-url = f"https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date={begin_date}&end_date={end_date}&station={station_id}&product=predictions&datum=MLLW&units=english&time_zone=lst_ldt&interval=hilo&format=json"
