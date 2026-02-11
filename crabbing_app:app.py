@@ -147,8 +147,3 @@ from datetime import datetime, timedelta
 
 begin_date = selected_date.strftime("%Y%m%d")
 end_date = (selected_date + timedelta(days=1)).strftime("%Y%m%d")
-
-elif max_height > 4:
-    st.warning("🟡 Decent conditions")
-else:
-    st.error("🔴 Tides may be too low for good crabbing")
