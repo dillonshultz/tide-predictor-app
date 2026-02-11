@@ -40,6 +40,8 @@ st.subheader("🗺️ Tides For Selected Location")
 # Get today's date in the format NOAA requires (YYYYMMDD)
 today = datetime.now().strftime("%Y%m%d")
 
+st.write(f"Showing tide predictions for **{selected_date.strftime('%B %d, %Y')}**")
+
 url = f"https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date={begin_date}&end_date={end_date}&station={station_id}&product=predictions&datum=MLLW&units=english&time_zone=lst_ldt&interval=hilo&format=json"
 
 response = requests.get(url)
@@ -63,8 +65,6 @@ else:
     st.write("Status code:", response.status_code)
 
 begin_date=20260210
-
-st.write(f"Showing tide predictions for **{selected_date.strftime('%B %d, %Y')}**")
 
 
 st.subheader("🦀 Best Crabbing Times")
