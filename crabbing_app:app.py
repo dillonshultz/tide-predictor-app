@@ -25,13 +25,15 @@ location = st.sidebar.selectbox(
     ["Astoria", "Buoy 10"]
 )
 
-selected_date = st.sidebar.date_input("Select Date")
-
-
 if location == "Astoria":
     station_id = "9439040"
 else:
     station_id = "9439201"
+
+
+
+selected_date = st.sidebar.date_input("Select Date")
+
 
 
 st.title("🦀 Oregon Tide & Crabbing Predictor")
