@@ -140,6 +140,15 @@ ax.set_title("Tide Heights for Today")
 
 st.pyplot(fig)
 
+st.subheader("📊 Conditions Summary")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.metric("🌊 Max Tide", f"{max_height} ft")
+
+with col2:
+    st.metric("💨 Wind Speed", f"{wind_speed} mph")
 
 
 from datetime import datetime, timedelta
