@@ -30,6 +30,19 @@ else:
 
 st.subheader("Today's Tides")
 
+st.sidebar.header("⚙️ Settings")
+
+location = st.sidebar.selectbox(
+    "Choose Location",
+    ["Astoria", "Buoy 10"]
+)
+
+selected_date = st.sidebar.date_input("Select Date")
+
+st.title("🦀 Oregon Tide & Crabbing Predictor")
+st.caption("Live NOAA data to help you find the best crabbing conditions")
+st.divider()
+
 # Get today's date in the format NOAA requires (YYYYMMDD)
 today = datetime.now().strftime("%Y%m%d")
 
@@ -131,15 +144,6 @@ st.pyplot(fig)
 
 from datetime import datetime, timedelta
 
-st.sidebar.header("⚙️ Settings")
-
-location = st.sidebar.selectbox(
-    "Choose Location",
-    ["Astoria", "Buoy 10"]
-)
-
-selected_date = st.sidebar.date_input("Select Date")
 
 begin_date = selected_date.strftime("%Y%m%d")
 end_date = (selected_date + timedelta(days=1)).strftime("%Y%m%d")
-
