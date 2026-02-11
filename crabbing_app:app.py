@@ -88,6 +88,8 @@ else:
     wind_speed = None
     st.info("Wind data not available yet (API key may still be activating).")
 
+Import requests
+
 import matplotlib.pyplot as plt
 import pandas as pd
 
