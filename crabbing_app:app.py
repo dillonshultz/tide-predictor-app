@@ -49,14 +49,17 @@ best_times = []
 
 for tide in data["predictions"]:
     if tide["type"] == "H":
-        best_times.append(tide["t"])
+        if wind_speed is not None and wind_speed < 12:
+            best_times.append(tide["t"])
 
 if best_times:
-    st.success("Good crabbing near these high tides:")
+    st.success("Good crabbing near these high tides with calm wind:")
     for time in best_times:
         st.write("•", time)
 else:
-    st.warning("No strong tides found today.")
+    st.warning("Wind may be too strong or no good tides today.")
+
+st.subheader("🦀 Best Crabbing Times")
 
 import requests
 
@@ -85,18 +88,36 @@ else:
     wind_speed = None
     st.info("Wind data not available yet (API key may still be activating).")
 
-st.subheader("🦀 Best Crabbing Times")
+import matplotlib.pyplot as plt
+import pandas as pd
 
-best_times = []
+tide_times = [t["t"] for t in data["predictions"]]
+tide_heights = [float(t["v"]) for t in data["predictions"]]
 
-for tide in data["predictions"]:
-    if tide["type"] == "H":
-        if wind_speed is not None and wind_speed < 12:
-            best_times.append(tide["t"])
+df = pd.DataFrame({
+    "Time": tide_times,
+    "Height": tide_heights
+})
 
-if best_times:
-    st.success("Good crabbing near these high tides with calm wind:")
-    for time in best_times:
-        st.write("•", time)
-else:
-    st.warning("Wind may be too strong or no good tides today.")
+df["Time"] = pd.to_datetime(df["Time"])
+
+st.subheader("🌊 Tide Height Graph")
+
+fig, ax = plt.subplots()
+ax.plot(df["Time"], df["Height"])
+ax.set_xlabel("Time")
+ax.set_ylabel("Tide Height (ft)")
+ax.set_title("Tide Heights for Today")
+
+st.pyplot(fig)
+
+
+
+from datetime import datetime, timedelta
+
+st.subheader("Select a Date")
+selected_date = st.date_input("Choose a crabbing day", datetime.today())
+
+begin_date = selected_date.strftime("%Y%m%d")
+end_date = (selected_date + timedelta(days=1)).strftime("%Y%m%d")
+
