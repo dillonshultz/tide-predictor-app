@@ -131,8 +131,14 @@ st.pyplot(fig)
 
 from datetime import datetime, timedelta
 
-st.subheader("Select a Date")
-selected_date = st.date_input("Choose a crabbing day", datetime.today())
+st.sidebar.header("⚙️ Settings")
+
+location = st.sidebar.selectbox(
+    "Choose Location",
+    ["Astoria", "Buoy 10"]
+)
+
+selected_date = st.sidebar.date_input("Select Date")
 
 begin_date = selected_date.strftime("%Y%m%d")
 end_date = (selected_date + timedelta(days=1)).strftime("%Y%m%d")
