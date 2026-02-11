@@ -149,3 +149,20 @@ from datetime import datetime, timedelta
 
 begin_date = selected_date.strftime("%Y%m%d")
 end_date = (selected_date + timedelta(days=1)).strftime("%Y%m%d")
+
+st.subheader("📊 Conditions Summary")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.metric("🌊 Max Tide", f"{max_height} ft")
+
+with col2:
+    st.metric("💨 Wind Speed", f"{wind_speed} mph")
+
+if max_height > 6:
+    st.success("🟢 Great crabbing tides!")
+elif max_height > 4:
+    st.warning("🟡 Decent conditions")
+else:
+    st.error("🔴 Tides may be too low for good crabbing")
