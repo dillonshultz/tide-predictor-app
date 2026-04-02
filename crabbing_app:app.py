@@ -32,7 +32,7 @@ else:
 selected_date = st.sidebar.date_input("Select Date")
 
 st.title("🦀 Oregon Tide & Crabbing Predictor")
-st.caption("Live NOAA data to help you find the best crabbing conditions")
+st.caption("Live NOAA data to help you find the best crabbing conditions in Astoria or Buoy 10!")
 st.divider()
 
 st.subheader("📅 Select Date for Tide Prediction")
@@ -41,7 +41,7 @@ begin_date = selected_date.strftime("%Y%m%d")
 end_date = (selected_date + timedelta(days=1)).strftime("%Y%m%d")
 url = f"https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date={begin_date}&end_date={end_date}&station={station_id}&product=predictions&datum=MLLW&units=english&time_zone=lst_ldt&interval=6&format=json"
 
-st.write("DEBUG Date Being Used:", begin_date)
+
 
 
 st.subheader("🗺️ Tides For Selected Location")
@@ -100,9 +100,6 @@ else:
 weather_api_key = "d6dd14da21a89d5e15c1d1a701534ed0"
 
 weather_url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={weather_api_key}&units=imperial"
-
-weather_response = requests.get(weather_url)
-weather_data = weather_response.json()
 
 weather_response = requests.get(weather_url)
 weather_data = weather_response.json()
