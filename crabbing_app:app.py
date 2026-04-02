@@ -47,9 +47,7 @@ st.write("DEBUG Date Being Used:", begin_date)
 st.subheader("🗺️ Tides For Selected Location")
 
 # Get today's date in the format NOAA requires (YYYYMMDD)
-today = datetime.now().strftime("%Y%m%d")
-
-url = f"https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=predictions&application=web_services&begin_date={today}&end_date={today}&datum=MLLW&station={station_id}&time_zone=lst_ldt&units=english&interval=hilo&format=json"
+url = f"https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=predictions&application=web_services&begin_date={begin_date}&end_date={end_date}&datum=MLLW&station={station_id}&time_zone=lst_ldt&units=english&interval=hilo&format=json"
 
 response = requests.get(url)
 
